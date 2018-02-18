@@ -9,11 +9,10 @@ import {Router} from '@angular/router';
     styleUrls: ['./add-team.component.css']
 })
 export class AddTeamComponent implements OnInit {
+    public team = Team;
 
     ngOnInit() {
     }
-
-    private team: Team;
 
     constructor(private _teamService: TeamsService,
                 private router: Router

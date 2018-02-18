@@ -1,17 +1,45 @@
 <form #teamForm="ngForm" (ngSubmit)="submit(team)">
     <div class="form-group">
         <label>Name</label>
-        <input [(ngModel)]="team.name" name="name" type="text" class="form-control">
+        <input minlength="2" #name="ngModel" [(ngModel)]="team.name" name="name" type="text" class="form-control" required>
     </div>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+        <div *ngIf="name.errors.required">
+            Name is required.
+        </div>
+        <div *ngIf="name.errors.minlength">
+            Name must be longer than 2 characters.
+        </div>
+    </div>
+
     <div class="form-group">
         <label>City</label>
-        <input [(ngModel)]="team.city" name="city" type="text" class="form-control">
+        <input minlength="2" #city="ngModel" [(ngModel)]="team.city" name="city" type="text" class="form-control" required>
     </div>
+    <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger">
+        <div *ngIf="city.errors.required">
+            City is required.
+        </div>
+        <div *ngIf="city.errors.minlength">
+            City must be longer than 2 characters.
+        </div>
+    </div>
+
     <div class="form-group">
         <label>Email</label>
-        <input [(ngModel)]="team.email" name="email" type="text" class="form-control">
+        <input  [(ngModel)]="team.email" #email="ngModel" name="email" type="text" class="form-control"
+                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
     </div>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div  *ngIf="email.errors && email.errors.required">
+            Email is required
+        </div>
+        <div  *ngIf="email.errors && email.errors.pattern">
+            Email is invalid
+        </div>
+    </div>
+
     <div class="input-group col-md-5 pl-0 my-lg-4 my-2">
-        <button type="submit" class="btn btn-primary mr-2">Add Team</button>
+        <button [disabled]="!teamForm.valid" type="submit" class="btn btn-primary mr-2">Add Team</button>
     </div>
 </form>

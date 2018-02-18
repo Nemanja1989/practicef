@@ -26,4 +26,12 @@ export class TeamListComponent implements OnInit {
               this.teams.splice(index, 1);
     }
 
+    showPreview(team) {
+        alert(`
+             Name: ${team.name},
+             City: ${team.city},
+             Email: ${team.email}
+         `);
+    }
+
 }
