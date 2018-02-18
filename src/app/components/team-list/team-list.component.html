@@ -1,3 +1,9 @@
 <p>
-  team-list works!
+    team-list works!
 </p>
+<ul *ngFor="let team of teams">
+    <li>
+        {{team.name}} {{team.city}} | {{team.email}}
+    </li>
+
+</ul>
