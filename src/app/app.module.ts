@@ -11,6 +11,7 @@ import {AppRoutingModule} from './routing/routing.module';
 import {TeamsService} from './services/teams.service';
 import {TeamsListPipe} from './pipes/teams-list.pipe';
 import {FormsModule} from '@angular/forms';
+import { AddTeamComponent } from './components/add-team/add-team.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {FormsModule} from '@angular/forms';
         LayoutComponent,
         NavbarComponent,
         PlayersComponent,
-        TeamsListPipe
+        TeamsListPipe,
+        AddTeamComponent
     ],
     imports: [
         BrowserModule,

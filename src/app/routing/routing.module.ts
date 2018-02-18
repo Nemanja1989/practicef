@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {Routes, RouterModule} from '@angular/router';
 import {TeamListComponent} from '../components/team-list/team-list.component';
 import {PlayersComponent} from '../components/players/players.component';
+import {AddTeamComponent} from '../components/add-team/add-team.component';
 
 @NgModule({
     imports: [
@@ -26,6 +27,10 @@ const appRoutes: Routes = [
     {
         path: 'players',
         component: PlayersComponent
+    },
+    {
+        path: 'addTeam',
+        component: AddTeamComponent
     }
 ];
 

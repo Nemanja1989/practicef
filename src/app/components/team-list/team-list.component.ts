@@ -13,8 +13,8 @@ export class TeamListComponent implements OnInit {
     teams;
     searchTerm: string;
 
-    constructor() {
-        this.teams = TeamsService.getTeams();
+    constructor(private _teamService: TeamsService ) {
+        this.teams = _teamService.getTeams();
 
     }
 

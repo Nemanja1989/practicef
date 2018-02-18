@@ -3,11 +3,11 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class TeamsService {
 
-    constructor() {
-    }
+    private teams;
+    private idCount;
 
-    static getTeams() {
-        return [
+    constructor() {
+        this.teams = [
             {
                 name: 'John',
                 city: 'Futog',
@@ -34,7 +34,22 @@ export class TeamsService {
                 email: 'nemanjabojanic@example.com'
             }
         ];
+
+        // get bigest ID
+        for (let i = 0; i <= this.teams.length - 1; i++) {
+            if (this.teams[i]['id'] > this.idCount) {
+                this.idCount = this.teams[i]['id'];
+            }
+        }
     }
 
+    getTeams() {
+        return this.teams;
+    }
+
+    addTeam(team) {
+        team['id'] = this.idCount++;
+                this.teams.push(team);
+    }
 
 }
