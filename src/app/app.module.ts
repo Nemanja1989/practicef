@@ -8,6 +8,9 @@ import {LayoutComponent} from './components/layout/layout.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {PlayersComponent} from './components/players/players.component';
 import {AppRoutingModule} from './routing/routing.module';
+import {TeamsService} from './services/teams.service';
+import {TeamsListPipe} from './pipes/teams-list.pipe';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -16,13 +19,17 @@ import {AppRoutingModule} from './routing/routing.module';
         TeamListComponent,
         LayoutComponent,
         NavbarComponent,
-        PlayersComponent
+        PlayersComponent,
+        TeamsListPipe
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        AppRoutingModule,
+        FormsModule
     ],
-    providers: [],
+    providers: [
+        TeamsService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

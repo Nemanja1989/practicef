@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {TeamsService} from '../../services/teams.service';
+import {TeamsListPipe} from '../../pipes/teams-list.pipe';
+
 
 @Component({
     selector: 'app-team-list',
@@ -8,35 +11,10 @@ import {Component, OnInit} from '@angular/core';
 export class TeamListComponent implements OnInit {
 
     teams;
+    searchTerm: string;
 
     constructor() {
-        this.teams = [
-            {
-                name: 'John',
-                city: 'Futog',
-                email: 'john@example.com'
-            },
-            {
-                name: 'Daniel',
-                city: 'Veternik',
-                email: 'daniel@example.com'
-            },
-            {
-                name: 'Martin',
-                city: 'Vukojebina',
-                email: 'martin@example.com'
-            },
-            {
-                name: 'Martin',
-                city: 'Begec',
-                email: 'martin@example.com'
-            },
-            {
-                name: 'Nemanja',
-                city: 'Novi Sad',
-                email: 'nemanjabojanic@example.com'
-            }
-        ];
+        this.teams = TeamsService.getTeams();
 
     }
 

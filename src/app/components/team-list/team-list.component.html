@@ -1,4 +1,5 @@
 
+Filter Name:  <input type="text" name="" [(ngModel)] = "searchTerm">
 <table class="table table-hover">
     <thead>
     <tr>
@@ -9,7 +10,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="table-light" *ngFor="let team of teams">
+    <tr class="table-light" *ngFor="let team of teams | teamsList:searchTerm">
         <td>{{team.name}}</td>
         <td>{{team.city}}</td>
         <td>{{team.email}}</td>
