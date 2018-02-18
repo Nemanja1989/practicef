@@ -43,4 +43,9 @@ export class TeamListComponent implements OnInit {
     ngOnInit() {
     }
 
+    removeTeam(team) {
+        let index = this.teams.indexOf(team);
+              this.teams.splice(index, 1);
+    }
+
 }

@@ -1,9 +1,10 @@
-<p>
-    team-list works!
-</p>
-<ul *ngFor="let team of teams">
-    <li>
-        {{team.name}} {{team.city}} | {{team.email}}
-    </li>
+<div style="text-align: center">
 
-</ul>
+        <!-- first is name you will use to call data, second is name of var from ts file -->
+        <ul *ngFor="let team of teams" style="list-style: none">
+          <li  class="">
+            {{team.name}} {{team.city}} | {{team.email}}
+          </li>
+            <button class="btn btn-danger" (click)="removeTeam(team)">Delete</button>
+        </ul>
+</div>
