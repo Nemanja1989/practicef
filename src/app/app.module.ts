@@ -12,6 +12,8 @@ import {TeamsService} from './services/teams.service';
 import {TeamsListPipe} from './pipes/teams-list.pipe';
 import {FormsModule} from '@angular/forms';
 import { AddTeamComponent } from './components/add-team/add-team.component';
+import { TeamRowComponent } from './components/team-row/team-row.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -22,12 +24,14 @@ import { AddTeamComponent } from './components/add-team/add-team.component';
         NavbarComponent,
         PlayersComponent,
         TeamsListPipe,
-        AddTeamComponent
+        AddTeamComponent,
+        TeamRowComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
     providers: [
         TeamsService

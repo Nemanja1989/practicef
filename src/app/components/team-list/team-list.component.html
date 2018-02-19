@@ -10,14 +10,7 @@ Filter Name:  <input type="text" name="" [(ngModel)] = "searchTerm">
     </tr>
     </thead>
     <tbody>
-    <tr class="table-light" *ngFor="let team of teams | teamsList:searchTerm">
-        <td>{{team.name}}</td>
-        <td>{{team.city}}</td>
-        <td>{{team.email}}</td>
-        <td>
-            <button class="btn btn-danger" (click)="removeTeam(team)">Delete</button>
-            <button type="button" class="btn-sm btn-secondary" (click)="showPreview(team)">Preview</button>
-        </td>
-    </tr>
+        <tr *ngFor="let team of teams | teamsList:searchTerm" [teamRow]="team" (onPreview)="showPreview(team)" (onRemove)="removeTeam(team)">
+        </tr>
     </tbody>
 </table>

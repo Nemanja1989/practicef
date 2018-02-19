@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
 import {TeamsService} from '../../services/teams.service';
 import {TeamsListPipe} from '../../pipes/teams-list.pipe';
-
+import {HttpErrorResponse} from '@angular/common/http';
+import {Team} from '../../models/team';
 
 @Component({
     selector: 'app-team-list',
@@ -12,13 +13,21 @@ export class TeamListComponent implements OnInit {
 
     teams;
     searchTerm: string;
+    private _teamService: TeamsService;
 
-    constructor(private _teamService: TeamsService ) {
-        this.teams = _teamService.getTeams();
-
+    constructor(private injector: Injector) {
     }
 
     ngOnInit() {
+        this._teamService = this.injector.get(TeamsService);
+        this.teams = this._teamService.getTeams().subscribe(
+            data => {
+                this.teams = data;
+            },
+            (err: HttpErrorResponse) => {
+                alert(`Backend returned code ${err.status} with message: ${err.error}`);
+            }
+        );
     }
 
     removeTeam(team) {

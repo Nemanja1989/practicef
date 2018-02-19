@@ -1,4 +1,8 @@
 import {Injectable} from '@angular/core';
+import {Observable, } from 'rxjs/Observable';
+import {Observer} from 'rxjs/Observer';
+import {Team} from '../models/team';
+import { HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class TeamsService {
@@ -6,7 +10,8 @@ export class TeamsService {
     private teams;
     private idCount;
 
-    constructor() {
+    constructor(private httpClient: HttpClient) {
+        /*
         this.teams = [
             {
                 name: 'John',
@@ -40,11 +45,11 @@ export class TeamsService {
             if (this.teams[i]['id'] > this.idCount) {
                 this.idCount = this.teams[i]['id'];
             }
-        }
+        }*/
     }
 
-    getTeams() {
-        return this.teams;
+    public getTeams() {
+        return this.httpClient.get<any []>('http://localhost:8000/teams.php');
     }
 
     addTeam(team) {

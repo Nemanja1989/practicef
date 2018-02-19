@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
     styleUrls: ['./add-team.component.css']
 })
 export class AddTeamComponent implements OnInit {
-    public team = Team;
+    public team: Team;
 
     ngOnInit() {
     }
@@ -18,7 +18,7 @@ export class AddTeamComponent implements OnInit {
                 private router: Router
     ) {
         // create empty team because of ngModel in form
-        this.team = new Team();
+        this.team = new Team(0, '', '', '');
     }
 
     submit() {
